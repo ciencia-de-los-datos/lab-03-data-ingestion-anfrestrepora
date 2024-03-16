@@ -25,5 +25,6 @@ def ingest_data():
     df['porcentaje_de_palabras_clave']=df['porcentaje_de_palabras_clave'].str.replace("%","").str.replace(",",".").astype(float)
     #Separar palabras unicamente por espacio y eliminar puntos para que las palabras claves, esten separadas unicamente por ,
     df['principales_palabras_clave']=df.groupby(['cluster'])['principales_palabras_clave'].transform(lambda x: " ".join(x)).str.replace(".","")
+    df['principales_palabras_clave']=df['principales_palabras_clave'].replace(r'\s+'," ",regex=True) 
     
     return df
