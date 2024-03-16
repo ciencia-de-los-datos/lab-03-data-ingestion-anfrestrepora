@@ -27,8 +27,8 @@ def ingest_data():
     #Convertir cantidad de palabras en entero
     df['cantidad_de_palabras_clave']=df['cantidad_de_palabras_clave'].astype(int)
     #Eliminar procentajes, espacios y convertir la columna porcentaje en float
-    df['porcentaje_de_palabras_clave']=df['porcentaje_de_palabras_clave'].str.replace("%","").str.replace(",",".").astype(float)
-    
+    df['porcentaje_de_palabras_clave']=df['porcentaje_de_palabras_clave'].str.replace("%","").str.replace(",",".").replace(r'\s+'," ",regex=True) .astype(float)
+     
     return df
 
 
